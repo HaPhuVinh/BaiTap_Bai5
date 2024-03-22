@@ -24,6 +24,7 @@ namespace BaiTap_Bai5
             Console.WriteLine("Bạn vừa nhập mảng số nguyên có {0} phần tử", n);
             foreach (int i in Arr) 
             {
+
                 Console.Write(i + "\t");
             }
             Console.WriteLine();
@@ -36,11 +37,38 @@ namespace BaiTap_Bai5
 
             Console.WriteLine();
             //Tìm số phần tử giống nhau trong mảng và hiển thị số lượng giống nhau ra màng hình
-            for (int i = 0; i < length; i++)
+            int dem = 0;
+            int dem1 = 0;
+            bool ktTrung = false;
+            for (int i = 0; i < Arr.Length; i++)
             {
-
+                dem = 0;
+                for (int j = i-1; j >= 0; j--)
+                {
+                    if (Arr[i] == Arr[j]) ktTrung = true;
+                }
+                if (ktTrung)
+                {
+                    continue;
+                }
+                else
+                {
+                    for (int k = i; k < Arr.Length; k++)
+                    {
+                        if (Arr[i] == Arr[k])
+                        {
+                            dem += 1;
+                        }
+                    }
+                    if (dem > 1)
+                    {
+                        Console.WriteLine("Có {0} Phần tử giống nhau có giá trị là {1}.", dem, Arr[i]);
+                        dem1 += 1;
+                    }
+                }
             }
-
+            if (dem1 < 1)
+                Console.WriteLine("Mảng bạn nhập không có phần tử giống nhau");
             Console.ReadKey();
         }
     }
