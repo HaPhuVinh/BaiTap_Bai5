@@ -69,6 +69,29 @@ namespace BaiTap_Bai5
             }
             if (dem1 < 1)
                 Console.WriteLine("Mảng bạn nhập không có phần tử giống nhau");
+
+            //In phần tử duy nhất trong mảng.
+            for (int i = 0; i < Arr.Length; i++)
+            {
+                for (int j = 0; j < Arr.Length; j++)
+                {
+                    if (Arr[i] == Arr[j])
+                    {
+                        if (j == i)
+                        {
+                            continue;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    Console.WriteLine("Các phần tử duy nhất trong mảng là:");
+                    Console.Write(Arr[i] + "\t");
+                }
+
+            }
+            
             Console.ReadKey();
         }
     }
