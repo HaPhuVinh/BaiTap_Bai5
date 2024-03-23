@@ -36,13 +36,14 @@ namespace BaiTap_Bai5
             }
 
             Console.WriteLine();
-            //Tìm số phần tử giống nhau trong mảng và hiển thị số lượng giống nhau ra màng hình
+            //Tìm số phần tử giống nhau trong mảng và hiển thị số lượng giống nhau
             int dem = 0;
             int dem1 = 0;
             bool ktTrung = false;
             for (int i = 0; i < Arr.Length; i++)
             {
                 dem = 0;
+                ktTrung = false;
                 for (int j = i-1; j >= 0; j--)
                 {
                     if (Arr[i] == Arr[j]) ktTrung = true;
@@ -71,27 +72,31 @@ namespace BaiTap_Bai5
                 Console.WriteLine("Mảng bạn nhập không có phần tử giống nhau");
 
             //In phần tử duy nhất trong mảng.
-            for (int i = 0; i < Arr.Length; i++)
+            Console.WriteLine("In phần tử duy nhất trong mảng:");
+            Console.Write(Arr[0] + "\t");
+            for (int i = 1; i < Arr.Length; i++)
             {
-                for (int j = 0; j < Arr.Length; j++)
+                ktTrung = false;
+                for (int j = i-1; j >= 0; j--)
                 {
                     if (Arr[i] == Arr[j])
                     {
-                        if (j == i)
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            break;
-                        }
+                        ktTrung = true;
+                        break;
                     }
-                    Console.WriteLine("Các phần tử duy nhất trong mảng là:");
-                    Console.Write(Arr[i] + "\t");
                 }
-
+                if (ktTrung)
+                    continue;
+                else
+                    Console.Write(Arr[i] + "\t");
             }
-            
+
+            //Chia mảng dữ liệu ban đầu thành mảng chẳn và mảng lẻ
+
+            int[] mangChan = new int[n];
+            int[] mangLe = new int[n];
+
+
             Console.ReadKey();
         }
     }
