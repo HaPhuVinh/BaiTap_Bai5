@@ -12,7 +12,7 @@ namespace BaiTap_Bai5
         {
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
-            Console.WriteLine("Bạn muốn tạo mảng một chiều bao nhiêu phần tử: ");
+            Console.Write("Bạn muốn tạo mảng một chiều bao nhiêu phần tử: ");
             int n = int.Parse(Console.ReadLine());
             int[] Arr = new int[n];
             for (int i = 0; i < n; i++)
@@ -90,11 +90,101 @@ namespace BaiTap_Bai5
                 else
                     Console.Write(Arr[i] + "\t");
             }
+            Console.WriteLine();
 
             //Chia mảng dữ liệu ban đầu thành mảng chẳn và mảng lẻ
 
-            int[] mangChan = new int[n];
-            int[] mangLe = new int[n];
+            int[] mangChan = new int[0];
+            int[] mangLe = new int[0];
+            int demSoChan = 0;
+            int demSoLe = 0;
+            for (int i = 0;i < Arr.Length; i++)
+            {
+                if (Arr[i] % 2 == 0)
+                {
+                    demSoChan += 1;
+                    Array.Resize(ref mangChan, demSoChan);
+                    mangChan[demSoChan-1] = Arr[i];
+                }
+                else
+                {
+                    demSoLe += 1;
+                    Array.Resize(ref mangLe, demSoLe);
+                    mangLe[demSoLe - 1] = Arr[i];
+                }
+            }
+            if(mangChan.Length>0)
+            {
+                Console.WriteLine("Mảng số chẵn có được từ Mãng ban đầu:");
+                foreach (int i in mangChan)
+                {
+                    Console.WriteLine(i + "\t");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Mãng ban đầu không có số chẵn.");
+            }
+
+            if (mangLe.Length > 0)
+            {
+                Console.WriteLine("Mảng số lẻ có được từ Mãng ban đầu:");
+                foreach (int i in mangLe)
+                {
+                    Console.WriteLine(i + "\t");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Mãng ban đầu không có số lẻ.");
+            }
+
+            //Sắp xếp Mảng ban đầu theo thứ tự giảm dần.
+            int m = 0;
+            int u = 0;
+            int temp = 0;
+            while (m < Arr.Length)
+            {
+                u = m +1 ;
+                while (u < Arr.Length)
+                {
+                    if (Arr[m] < Arr[u])
+                    {
+                        temp = Arr[m];
+                        Arr[m] = Arr[u];
+                        Arr[u] = temp;
+                    }
+                    u++;
+                }
+                m++;
+            }
+            Console.WriteLine("Sắp xếp Mảng ban đầu giảm dần");
+            foreach (int i in Arr)
+            {
+                Console.WriteLine(i + "\t");
+            }
+            Console.WriteLine();
+
+            //int[] mangGiamDan = new int[n];
+            //mangGiamDan = Arr;
+            //Array.Sort(mangGiamDan);
+            //Array.Reverse(mangGiamDan);
+            //Console.WriteLine("Sắp xếp Mảng ban đầu giảm dần");
+            //foreach (int i in mangGiamDan)
+            //{
+            //    Console.WriteLine(i + "\t");
+            //}
+            //Console.WriteLine();
+
+            //Kiểm tra lại thứ tự Mảng ban đầu
+            //foreach (int i in Arr)
+            //{
+            //    Console.WriteLine(i + "\t");
+            //}
+            //Console.WriteLine();
+
+
+
 
 
             Console.ReadKey();
